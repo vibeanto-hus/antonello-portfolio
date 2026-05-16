@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonello Totaro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface2: #1a1a1a;
+            --text: #f0ece4;
+            --muted: #6b6b6b;
+            --accent: #c9b99a;
+            --gold: #d4a853;
+            --border: #222222;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --mono: 'DM Mono', monospace;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-weight: 300;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .nav-name {
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            text-transform: uppercase
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s
+        }
+
+        .nav-links a:hover {
+            color: var(--accent)
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 3rem 4rem;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201, 185, 154, 0.04) 0%, transparent 70%)
+        }
+
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-name {
+            font-family: var(--serif);
+            font-size: clamp(4rem, 9vw, 8rem);
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .hero-sub {
+            font-family: var(--sans);
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 580px;
+            font-weight: 300;
+            margin-bottom: 3rem
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem
+        }
+
+        .stat {
+            border-left: 1px solid var(--border);
+            padding-left: 1.5rem
+        }
+
+        .stat-num {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 2.2rem;
+            color: var(--accent);
+            display: block;
+            line-height: 1
+        }
+
+        .stat-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            display: block
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            opacity: 0.5
+        }
+
+        section {
+            padding: 6rem 3rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border)
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start
+        }
+
+        .about-headline {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.01em
+        }
+
+        .about-headline em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .about-body {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.8
+        }
+
+        .about-body p+p {
+            margin-top: 1rem
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            text-transform: uppercase
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--border)
+        }
+
+        .number-card {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border);
+            position: relative
+        }
+
+        .number-card:last-child {
+            border-right: none
+        }
+
+        .number-card:hover .number-bg {
+            opacity: 1
+        }
+
+        .number-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 185, 154, 0.02) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s
+        }
+
+        .number-val {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 3rem;
+            color: var(--text);
+            display: block;
+            line-height: 1;
+            position: relative
+        }
+
+        .number-desc {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+            display: block;
+            position: relative
+        }
+
+        .deals-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border)
+        }
+
+        .deal-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+            cursor: default
+        }
+
+        .deal-row:last-child {
+            border-bottom: none
+        }
+
+        .deal-row:hover {
+            background: var(--surface)
+        }
+
+        .deal-company {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.2rem
+        }
+
+        .deal-detail {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.2rem
+        }
+
+        .deal-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-right: 1rem
+        }
+
+        .deal-amount {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            color: var(--accent)
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .partner-card {
+            background: var(--bg);
+            padding: 3rem 2.5rem;
+            transition: background 0.2s
+        }
+
+        .partner-card:hover {
+            background: var(--surface)
+        }
+
+        .partner-name {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem
+        }
+
+        .partner-amount {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1rem
+        }
+
+        .partner-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .system-card {
+            background: var(--bg);
+            padding: 2.5rem;
+            transition: background 0.2s
+        }
+
+        .system-card:hover {
+            background: var(--surface)
+        }
+
+        .system-title {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem
+        }
+
+        .system-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .toni-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+
+        .toni-headline {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            line-height: 1.15;
+            margin-bottom: 1rem
+        }
+
+        .toni-headline em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .toni-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.8
+        }
+
+        .toni-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .flow-step:last-child {
+            border-bottom: none
+        }
+
+        .flow-num {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            width: 20px
+        }
+
+        .flow-text {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            color: var(--text)
+        }
+
+        .flow-arrow {
+            color: var(--accent);
+            font-size: 0.7rem;
+            margin-left: auto
+        }
+
+        .early-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .early-card {
+            background: var(--bg);
+            padding: 2.5rem;
+            transition: background 0.2s
+        }
+
+        .early-card:hover {
+            background: var(--surface)
+        }
+
+        .early-role {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem
+        }
+
+        .early-company {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem
+        }
+
+        .early-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .early-highlight {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid rgba(201, 185, 154, 0.2);
+            color: var(--accent);
+            margin-top: 1rem
+        }
+
+        .astro-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start
+        }
+
+        .astro-chart {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .astro-planet {
+            background: var(--bg);
+            padding: 1.5rem;
+            transition: background 0.2s
+        }
+
+        .astro-planet:hover {
+            background: var(--surface)
+        }
+
+        .planet-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block
+        }
+
+        .planet-name {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.3rem
+        }
+
+        .planet-placement {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem
+        }
+
+        .planet-quality {
+            font-size: 0.75rem;
+            color: var(--muted)
+        }
+
+        .astro-insight {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.8
+        }
+
+        .astro-insight p+p {
+            margin-top: 1rem
+        }
+
+        .astro-title {
+            font-family: var(--serif);
+            font-size: 2rem;
+            margin-bottom: 0.5rem
+        }
+
+        .astro-title em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .astro-subtitle {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 2rem
+        }
+
+        .langs-row {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--border)
+        }
+
+        .lang-item {
+            flex: 1;
+            padding: 2rem;
+            border-right: 1px solid var(--border);
+            text-align: center
+        }
+
+        .lang-item:last-child {
+            border-right: none
+        }
+
+        .lang-name {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 0.3rem
+        }
+
+        .lang-level {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            text-transform: uppercase
+        }
+
+        .contact-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end
+        }
+
+        .contact-headline {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.02em
+        }
+
+        .contact-headline em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-end
+        }
+
+        .contact-link {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem
+        }
+
+        .contact-link:hover {
+            color: var(--accent)
+        }
+
+        .contact-link::after {
+            content: '↗';
+            font-size: 0.8em
+        }
+
+        .badge-open {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            color: var(--gold);
+            margin-bottom: 2rem
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 2s infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.3
+            }
+        }
+
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .footer-copy {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-transform: uppercase
+        }
+
+        @media(max-width:768px) {
+            .nav {
+                padding: 1rem 1.5rem
+            }
+
+            .hero {
+                padding: 0 1.5rem 3rem
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem
+            }
+
+            section {
+                padding: 4rem 1.5rem
+            }
+
+            .about-grid,
+            .toni-block,
+            .astro-block {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+
+            .numbers-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .number-card {
+                border-right: none;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .partners-grid,
+            .systems-grid,
+            .early-grid {
+                grid-template-columns: 1fr
+            }
+
+            .contact-block {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: flex-start
+            }
+
+            .langs-row {
+                flex-direction: column
+            }
+
+            .lang-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border)
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <span class="nav-name">Antonello Totaro</span>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#deals">Deals</a>
+            <a href="#toni">Toni</a>
+            <a href="#roots">Roots</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="badge-open"><span class="badge-dot"></span>Open to opportunities</div>
+        <div class="hero-label">Global GTM · AI-Native Builder · Cross-Functional Collaborator</div>
+        <h1 class="hero-name">Antonello<br><em>Totaro.</em></h1>
+        <p class="hero-sub">Built deep partnerships with engineering and product to ship real things — then went out and
+            sold them. Covered every revenue function solo when needed, never without a team when it mattered.</p>
+        <div class="hero-stats">
+            <div class="stat"><span class="stat-num">$600k+</span><span class="stat-label">Partner Deal</span></div>
+            <div class="stat"><span class="stat-num">20×</span><span class="stat-label">Price Uplift</span></div>
+            <div class="stat"><span class="stat-num">6</span><span class="stat-label">Continents</span></div>
+            <div class="stat"><span class="stat-num">14→1</span><span class="stat-label">GTM Team</span></div>
+        </div>
+        <span class="scroll-hint">Scroll</span>
+    </div>
+
+    <section id="about">
+        <div class="section-label">About</div>
+        <div class="about-grid">
+            <div>
+                <h2 class="about-headline">Revenue person who <em>works like an engineer</em> and leads like someone
+                    who's
+                    managed people since 23.</h2>
+            </div>
+            <div>
+                <div class="about-body">
+                    <p>4+ years at Humanitec as the primary bridge between what prospects needed and what engineering
+                        could build.
+                        Worked directly with the PM to turn deal patterns into roadmap decisions — not by filing
+                        tickets, but by
+                        being in the room when it mattered.</p>
+                    <p>Co-designed the Humanitec Sandbox with the product team. Made active GitHub contributions to
+                        tooling and
+                        infrastructure. Engaged infrastructure teams credibly without extra SE support — because
+                        understanding the
+                        product deeply is what earns trust from both sides of the table.</p>
+                    <p>When headcount shrank, took on every GTM function solo — not because working alone is the
+                        preference, but
+                        because the mission required it. Based in Barcelona. 4 languages. 40+ countries. Learned how
+                        teams really
+                        work from managing 40+ people across a dozen nationalities at 23.</p>
+                </div>
+                <div class="about-tags">
+                    <span class="tag">Platform Engineering</span>
+                    <span class="tag">Product Influence</span>
+                    <span class="tag">IDP / Backstage</span>
+                    <span class="tag">Claude Code</span>
+                    <span class="tag">MCP</span>
+                    <span class="tag">Supabase</span>
+                    <span class="tag">People Leadership</span>
+                    <span class="tag">Cross-Functional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">Numbers</div>
+        <div class="numbers-grid">
+            <div class="number-card">
+                <div class="number-bg"></div><span class="number-val">$464k+</span><span class="number-desc">Solo ARR
+                    closed · 7
+                    named accounts</span>
+            </div>
+            <div class="number-card">
+                <div class="number-bg"></div><span class="number-val">14+</span><span class="number-desc">Enterprise
+                    RFPs
+                    handled simultaneously</span>
+            </div>
+            <div class="number-card">
+                <div class="number-bg"></div><span class="number-val">160+</span><span class="number-desc">Demo
+                    attendees · from
+                    20 to global</span>
+            </div>
+            <div class="number-card">
+                <div class="number-bg"></div><span class="number-val">$0</span><span class="number-desc">Marketing
+                    budget · from
+                    $400k/yr</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="deals">
+        <div class="section-label">Solo Deal Wins — 2024 to Present</div>
+        <div class="deals-list">
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">Mobicom Mongolia</div>
+                    <div class="deal-detail">Full cycle · zero shared language · 12x old price point</div>
+                </div><span class="deal-tag">+650%</span><span class="deal-amount">$90k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">National Hockey League</div>
+                    <div class="deal-detail">C-suite remote presentation · Slack-guided champion</div>
+                </div><span class="deal-tag">20x MVP</span><span class="deal-amount">$80k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">Sartorius</div>
+                    <div class="deal-detail">Cold intro at Berlin booth → multi-stakeholder close</div>
+                </div><span class="deal-tag">+558%</span><span class="deal-amount">$79k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">Biorelate</div>
+                    <div class="deal-detail">Largest per-user price in Humanitec history · Christmas close</div>
+                </div><span class="deal-tag">No MVP</span><span class="deal-amount">$65k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">Hubtel Ghana</div>
+                    <div class="deal-detail">4-week POC · all commercial, technical &amp; negotiation solo</div>
+                </div><span class="deal-tag">4-week</span><span class="deal-amount">$60k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">Siigo Colombia</div>
+                    <div class="deal-detail">Only Spanish speaker at Humanitec · full cycle solo</div>
+                </div><span class="deal-tag">LATAM #1</span><span class="deal-amount">$45k ARR</span>
+            </div>
+            <div class="deal-row">
+                <div>
+                    <div class="deal-company">On Location (Endeavour)</div>
+                    <div class="deal-detail">Strong enough case to bypass MVP entirely</div>
+                </div><span class="deal-tag">Direct</span><span class="deal-amount">$45k ARR</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">Partnerships Built</div>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-name">Kyndryl</div>
+                <div class="partner-amount">$600k+ ARR Influenced</div>
+                <div class="partner-desc">First-ever Humanitec joint deal — Kaiser Permanente. Now coordinating globally
+                    on ADIF
+                    (Spanish national railway) for the 2027 government investment cycle.</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-name">Backstage / Spotify</div>
+                <div class="partner-amount">100% Ownership</div>
+                <div class="partner-desc">Overcame CEO-level resistance internally. Positioned Humanitec as the
+                    orchestration
+                    layer behind Backstage — directly defusing the most common enterprise objection pattern.</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-name">Nagarro</div>
+                <div class="partner-amount">GTM Partner</div>
+                <div class="partner-desc">Identified, qualified, and onboarded a global digital engineering partner
+                    extending
+                    Humanitec reach into accounts where Nagarro operates as a trusted advisor.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="toni">
+        <div class="section-label">Venture — Toni CRM</div>
+        <div class="toni-block">
+            <div>
+                <h2 class="toni-headline">Built the CRM<br>the team <em>needed.</em></h2>
+                <p class="toni-desc" style="margin-top:1rem">AI-native revenue intelligence for Sales Engineers. The
+                    post-demo
+                    workflow was broken for everyone — Toni fixed it. Built from scratch, in active daily production use
+                    managing
+                    real $45k–$90k ARR deals.</p>
+                <p class="toni-desc" style="margin-top:0.8rem">Shipped with Claude Code, Supabase, Next.js, and an
+                    agentic
+                    orchestration system. The kind of tool that only gets built when the person writing the code is also
+                    the
+                    person closing the deals.</p>
+                <div class="about-tags" style="margin-top:1.5rem">
+                    <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Claude
+                        API</span><span class="tag">MCP</span><span class="tag">Agentic AI</span>
+                </div>
+            </div>
+            <div>
+                <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">
+                    Post-Demo Automation Pipeline</div>
+                <div class="toni-flow">
+                    <div class="flow-step"><span class="flow-num">01</span><span class="flow-text">Granola call
+                            notes</span><span class="flow-arrow">→</span></div>
+                    <div class="flow-step"><span class="flow-num">02</span><span class="flow-text">Claude API
+                            processing</span><span class="flow-arrow">→</span></div>
+                    <div class="flow-step"><span class="flow-num">03</span><span class="flow-text">HubSpot API
+                            sync</span><span class="flow-arrow">→</span></div>
+                    <div class="flow-step"><span class="flow-num">04</span><span class="flow-text">ReportLab branded
+                            PDF</span><span class="flow-arrow">→</span></div>
+                    <div class="flow-step"><span class="flow-num">05</span><span class="flow-text">Gmail draft
+                            ready</span><span class="flow-arrow">✓</span></div>
+                </div>
+                <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);margin-top:1.5rem">
+                    Admin time: hours → zero. Report delivered before the prospect replies.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">GTM Systems</div>
+        <div class="systems-grid">
+            <div class="system-card">
+                <div class="system-title">Autonomous Outbound Engine</div>
+                <div class="system-desc">Claude Chrome Extension bypasses HubSpot's 50-lead limit. 4 parallel sequences
+                    at 250
+                    leads/day via Claude Haiku. Zero manual review. Amplemarket Duo runs 24/7 with signal-based
+                    triggers.</div>
+            </div>
+            <div class="system-card">
+                <div class="system-title">$400k → $0 Marketing Rebuild</div>
+                <div class="system-desc">Eliminated all paid ads. Replaced with a recurring demo program aligned to live
+                    market
+                    themes. Attendance: 20 → 160 EU/US + 80 Asia. Humanitec's first global demo program.</div>
+            </div>
+            <div class="system-card">
+                <div class="system-title">Lead Intelligence Pipelines</div>
+                <div class="system-desc">Zapier + RB2B identifies all web visitors in real time. Amplemarket and HubSpot
+                    trigger
+                    re-engagement automatically. CTA footprint rationalised to exactly two: Demo or Sandbox.</div>
+            </div>
+            <div class="system-card">
+                <div class="system-title">Post-Call Automation</div>
+                <div class="system-desc">Every first meeting auto-generates a structured report via Granola → Claude.
+                    Timeline,
+                    goals, tech stack, next steps — delivered before the prospect replies. Zero post-call admin.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roots">
+        <div class="section-label">Where it started</div>
+        <div class="early-grid">
+            <div class="early-card">
+                <div class="early-role">Restaurant Manager</div>
+                <div class="early-company">Nando's · Bristol, UK · 2013–2018</div>
+                <div class="early-desc">Promoted to management at 23, running one of the chain's top-10 profit
+                    locations. Led
+                    shifts of 40+ people across a dozen nationalities and a 20-year age range — the kind of team where
+                    authority
+                    is earned in real time, not given by title. Every people management instinct applied later to
+                    running
+                    enterprise pipeline came from here.</div>
+                <span class="early-highlight">40+ people · Top-10 profit · Promoted at 23</span>
+            </div>
+            <div class="early-card">
+                <div class="early-role">Lead Generator & Partnership Manager</div>
+                <div class="early-company">TEDxVarese · Italy · 2018–Present</div>
+                <div class="early-desc">Closed 20+ Gold Partnerships with innovative companies in Northern Italy.
+                    C-level B2B
+                    negotiation in a volunteer-led organisation — where the pitch has to be good enough to work without
+                    a
+                    commission. The earliest version of the partnership instinct later applied to Kyndryl, Backstage,
+                    and Nagarro.
+                </div>
+                <span class="early-highlight">20+ partnerships · C-level · Volunteer-led</span>
+            </div>
+            <div class="early-card">
+                <div class="early-role">Project Manager</div>
+                <div class="early-company">Beyond Pricing · Remote / Global · 2018–2019</div>
+                <div class="early-desc">Travel-tech implementation across global client sites. First hands-on technical
+                    work:
+                    Python, HTML, ELK Stack for data analysis. The beginning of a technical curiosity that eventually
+                    led to
+                    GitHub contributions and Toni CRM.</div>
+                <span class="early-highlight">First code · Global travel · Technical seed</span>
+            </div>
+            <div class="early-card">
+                <div class="early-role">SDR → AE → Sales Engineer</div>
+                <div class="early-company">Pulse Secure · expert.ai · Barcelona · 2020–2021</div>
+                <div class="early-desc">100 cold calls per day. Closed 4 enterprise accounts at Pulse Secure
+                    (Fincantieri,
+                    Valentino, Costa Crociere, Gucci). Exceeded quota every quarter. First deep immersion in AI-driven
+                    enterprise
+                    sales at expert.ai. The foundation of the outbound discipline still running today.</div>
+                <span class="early-highlight">4 enterprise closes · Quota exceeded · Every quarter</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="astro">
+        <div class="section-label">Birth Chart · Varese, Italy · 23 Nov 1992 · 20:50</div>
+        <div class="astro-block">
+            <div>
+                <h2 class="astro-title">The <em>Global Explorer</em></h2>
+                <div class="astro-subtitle">Sagittarius · Scorpio Moon · Cancer Rising · Aries MC</div>
+                <div class="astro-chart">
+                    <div class="astro-planet"><span class="planet-symbol">☀️</span>
+                        <div class="planet-name">Sun</div>
+                        <div class="planet-placement">1° Sagittarius</div>
+                        <div class="planet-quality">Jupiter-ruled · fire · expansion</div>
+                    </div>
+                    <div class="astro-planet"><span class="planet-symbol">🌙</span>
+                        <div class="planet-name">Moon</div>
+                        <div class="planet-placement">27° Scorpio</div>
+                        <div class="planet-quality">Deep intensity · investigative</div>
+                    </div>
+                    <div class="astro-planet"><span class="planet-symbol">⬆️</span>
+                        <div class="planet-name">Rising</div>
+                        <div class="planet-placement">26° Cancer</div>
+                        <div class="planet-quality">Protective · intuitive outer persona</div>
+                    </div>
+                    <div class="astro-planet"><span class="planet-symbol">🏔️</span>
+                        <div class="planet-name">Midheaven</div>
+                        <div class="planet-placement">9° Aries</div>
+                        <div class="planet-quality">Pioneer · first-mover career energy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="astro-insight">
+                <p>A genuinely unusual stack: outward fire and vision (Sagittarius Sun + Aries MC) layered over real
+                    emotional
+                    depth and investigative instinct (Scorpio Moon + Cancer Rising).</p>
+                <p>The Cancer Rising is the part that makes him a natural team builder — protective, attuned to the
+                    people
+                    around him, earns loyalty by giving it first. The Scorpio Moon is why the deals he touches have
+                    unusual depth:
+                    he reads the room, finds the real objection, stays in longer than anyone else would.</p>
+                <p>The Aries Midheaven is the engine — it makes doing feel better than planning. But Sagittarius without
+                    a
+                    domain is just tourism. The global explorer path only becomes a career when that Jupiter-driven
+                    expansiveness
+                    meets something worth going deep on.</p>
+                <p
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);margin-top:1.5rem;text-transform:uppercase">
+                    Analysis via claude.ai · Chart via astro.com</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">Languages</div>
+        <div class="langs-row">
+            <div class="lang-item"><span class="lang-name">Italian</span><span class="lang-level">Native</span></div>
+            <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent — C2</span>
+            </div>
+            <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Fluent — C1</span>
+            </div>
+            <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Conversational</span>
+            </div>
+            <div class="lang-item"><span class="lang-name">40+</span><span class="lang-level">Countries visited</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-label">Contact</div>
+        <div class="contact-block">
+            <h2 class="contact-headline">Let's<br><em>talk.</em></h2>
+            <div class="contact-links">
+                <a class="contact-link" href="mailto:antonellototaro@gmail.com">antonellototaro@gmail.com</a>
+                <a class="contact-link" href="https://linkedin.com/in/antonello-totaro-21bb87a2">LinkedIn</a>
+                <a class="contact-link" href="https://github.com/vibeanto-hus">GitHub</a>
+                <a class="contact-link" href="https://toni-crm.vercel.app">Toni CRM →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-copy">Barcelona, Spain · Remote-Global</span>
+        <span class="footer-copy">Built with Claude Code · © 2026</span>
+    </footer>
+
+</body>
+
+</html>
