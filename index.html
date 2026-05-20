@@ -819,10 +819,58 @@
                 text-align: center
             }
         }
+
+        /* --- Interactive & Animation Styles --- */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--gold));
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        .reveal-heading {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-heading.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flow-step {
+            opacity: 0.35;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-bottom-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flow-step.active {
+            opacity: 1;
+            border-bottom-color: var(--accent);
+        }
+
+        .flow-step.active .flow-num {
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(201, 185, 154, 0.4);
+        }
+
+        .flow-step.active .flow-arrow {
+            transform: translateX(4px);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
     </style>
 </head>
 
 <body>
+    <div id="reading-progress"></div>
 
     <nav class="nav">
         <span class="nav-name">Antonello Totaro</span>
@@ -858,7 +906,7 @@
             <div class="section-label">Open To</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;">
                 <div>
-                    <h2
+                    <h2 class="reveal-heading"
                         style="font-family: var(--serif); font-size: 3.5rem; font-weight: normal; margin-bottom: 2rem; line-height: 1.1; color: var(--text);">
                         Looking for the right <span style="font-style: italic; color: var(--accent);">fit.</span>
                     </h2>
@@ -897,7 +945,7 @@
                         <h3
                             style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
                             Full ownership</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">End-to-end revenue
+                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">End-to-side revenue
                             leadership at a company where GTM, product, and engineering need to speak the same language.
                             Ideally platform engineering, AI, or developer tooling.</p>
                     </div>
@@ -928,7 +976,7 @@
         <div class="section-label">About</div>
         <div class="about-grid">
             <div>
-                <h2 class="about-headline">Revenue person who <em>works like an engineer</em> and leads like someone
+                <h2 class="about-headline reveal-heading">Revenue person who <em>works like an engineer</em> and leads like someone
                     who's
                     managed people since 23.</h2>
             </div>
@@ -1069,7 +1117,7 @@
         <div class="section-label">Venture — Toni CRM</div>
         <div class="toni-block">
             <div>
-                <h2 class="toni-headline">Built the CRM<br>the team <em>needed.</em></h2>
+                <h2 class="toni-headline reveal-heading">Built the CRM<br>the team <em>needed.</em></h2>
                 <p class="toni-desc" style="margin-top:1rem">AI-native revenue intelligence for Sales Engineers. The
                     post-demo
                     workflow was broken for everyone — Toni fixed it. Built from scratch, in active daily production use
@@ -1258,28 +1306,28 @@
         <div class="section-label">Birth Chart · Varese, Italy · 23 Nov 1992 · 20:50</div>
         <div class="astro-block">
             <div>
-                <h2 class="astro-title">The <em>Global Explorer</em></h2>
+                <h2 class="astro-title reveal-heading">The <em>Global Explorer</em></h2>
                 <div class="astro-subtitle">Sagittarius · Scorpio Moon · Cancer Rising · Aries MC</div>
                 <div class="astro-chart">
                     <div class="astro-planet"><span class="planet-symbol">☀️</span>
-                        <div class="planet-name">Sun</div>
-                        <div class="planet-placement">1° Sagittarius</div>
-                        <div class="planet-quality">Jupiter-ruled · fire · expansion</div>
+                         <div class="planet-name">Sun</div>
+                         <div class="planet-placement">1° Sagittarius</div>
+                         <div class="planet-quality">Jupiter-ruled · fire · expansion</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">🌙</span>
-                        <div class="planet-name">Moon</div>
-                        <div class="planet-placement">27° Scorpio</div>
-                        <div class="planet-quality">Deep intensity · investigative</div>
+                         <div class="planet-name">Moon</div>
+                         <div class="planet-placement">27° Scorpio</div>
+                         <div class="planet-quality">Deep intensity · investigative</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">⬆️</span>
-                        <div class="planet-name">Rising</div>
-                        <div class="planet-placement">26° Cancer</div>
-                        <div class="planet-quality">Protective · intuitive outer persona</div>
+                         <div class="planet-name">Rising</div>
+                         <div class="planet-placement">26° Cancer</div>
+                         <div class="planet-quality">Protective · intuitive outer persona</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">🏔️</span>
-                        <div class="planet-name">Midheaven</div>
-                        <div class="planet-placement">9° Aries</div>
-                        <div class="planet-quality">Pioneer · first-mover career energy</div>
+                         <div class="planet-name">Midheaven</div>
+                         <div class="planet-placement">9° Aries</div>
+                         <div class="planet-quality">Pioneer · first-mover career energy</div>
                     </div>
                 </div>
             </div>
@@ -1405,7 +1453,7 @@
     <section id="contact">
         <div class="section-label">Contact</div>
         <div class="contact-block">
-            <h2 class="contact-headline">Let's<br><em>talk.</em></h2>
+            <h2 class="contact-headline reveal-heading">Let's<br><em>talk.</em></h2>
             <div class="contact-links">
                 <a class="contact-link" href="mailto:antonellototaro@gmail.com">antonellototaro@gmail.com</a>
                 <a class="contact-link" href="https://linkedin.com/in/antonello-totaro-21bb87a2">LinkedIn</a>
@@ -1421,6 +1469,100 @@
         <span class="footer-copy">Built with Claude Code · © 2026</span>
     </footer>
 
+    <script>
+        // --- 1. Reading Progress Bar ---
+        const progressBar = document.getElementById('reading-progress');
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // --- 2. Scroll-Triggered Heading Reveals ---
+        const revealHeadings = document.querySelectorAll('.reveal-heading');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target); // Trigger only once
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        revealHeadings.forEach(heading => revealObserver.observe(heading));
+
+        // --- 3. Active Section Tracking in Navigation ---
+        const sections = document.querySelectorAll('section, .hero');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    if (id) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    } else if (entry.target.classList.contains('hero')) {
+                        // If in hero, remove active from all nav links
+                        navLinks.forEach(link => link.classList.remove('active'));
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '-20% 0px -60% 0px' // Center of screen focus
+        });
+        sections.forEach(section => navObserver.observe(section));
+
+        // --- 4. Animated Toni CRM Pipeline ---
+        const pipelineSteps = document.querySelectorAll('.toni-flow .flow-step');
+        let currentStep = 0;
+        
+        function animatePipeline() {
+            // Remove active class from all steps
+            pipelineSteps.forEach(step => step.classList.remove('active'));
+            
+            // Add active class to current step
+            pipelineSteps[currentStep].classList.add('active');
+            
+            // Advance step or reset
+            if (currentStep === pipelineSteps.length - 1) {
+                // Stay on final completed step longer before restarting
+                currentStep = 0;
+                setTimeout(animatePipeline, 3500);
+            } else {
+                currentStep++;
+                setTimeout(animatePipeline, 1800);
+            }
+        }
+        
+        // Start pipeline animation when section is in view
+        const toniSection = document.getElementById('toni');
+        let animationStarted = false;
+        const toniObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animationStarted) {
+                    animationStarted = true;
+                    animatePipeline();
+                    toniObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        if (toniSection) {
+            toniObserver.observe(toniSection);
+        } else {
+            // Fallback if section structure changes
+            animatePipeline();
+        }
+    </script>
 </body>
 
 </html>
