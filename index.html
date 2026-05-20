@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antonello Totaro</title>
+    <meta name="description" content="Antonello Totaro — Global GTM, AI-Native Builder, and Cross-Functional Collaborator. Co-designer of the Humanitec Sandbox, creator of Toni CRM. Based in Barcelona.">
+    <meta property="og:title" content="Antonello Totaro · Global GTM & AI-Native Builder">
+    <meta property="og:description" content="Co-designed the Humanitec Sandbox, creator of Toni CRM. Revenue leader with deep engineering instincts.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antonello Totaro · Global GTM & AI-Native Builder">
+    <meta name="twitter:description" content="Co-designed the Humanitec Sandbox, creator of Toni CRM. Revenue leader with deep engineering instincts.">
+    <meta name="twitter:image" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
@@ -866,6 +875,59 @@
         .nav-links a.active {
             color: var(--accent);
         }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .hero-links a {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(201, 185, 154, 0.15);
+        }
+
+        .toni-cta {
+            display: inline-flex;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .toni-cta:hover {
+            background: rgba(201, 185, 154, 0.05);
+            box-shadow: 0 0 15px rgba(201, 185, 154, 0.25);
+        }
+
+        @media(max-width:768px) {
+            .hero-links {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 
@@ -898,6 +960,14 @@
             <div class="stat"><span class="stat-num">6</span><span class="stat-label">Continents</span></div>
             <div class="stat"><span class="stat-num">14→1</span><span class="stat-label">GTM Team</span></div>
         </div>
+        
+        <div class="hero-links">
+            <a href="https://linkedin.com/in/antonello-totaro-21bb87a2" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/vibeanto-hus" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="mailto:antonellototaro@gmail.com">Email ↗</a>
+            <a href="https://toni-crm.vercel.app" target="_blank" rel="noopener noreferrer">Toni CRM ↗</a>
+        </div>
+
         <span class="scroll-hint">Scroll</span>
     </div>
 
@@ -945,7 +1015,7 @@
                         <h3
                             style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
                             Full ownership</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">End-to-side revenue
+                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">End-to-end revenue
                             leadership at a company where GTM, product, and engineering need to speak the same language.
                             Ideally platform engineering, AI, or developer tooling.</p>
                     </div>
@@ -956,7 +1026,9 @@
                         <h3
                             style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
                             The full-cycle closer</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">Joining a high-performing sales team at a platform or infrastructure company — owning the full cycle from outbound to close, with the technical depth to run it without an SE.</p>
+                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">Joining a
+                            high-performing sales team at a platform or infrastructure company — owning the full cycle
+                            from outbound to close, with the technical depth to run it without an SE.</p>
                     </div>
                     <div>
                         <div
@@ -965,7 +1037,9 @@
                         <h3
                             style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
                             Deep ownership, no politics</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">A role where the work speaks louder than the title. Building pipeline, running technical conversations, closing deals — and having the autonomy to do it properly.</p>
+                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">A role where the
+                            work speaks louder than the title. Building pipeline, running technical conversations,
+                            closing deals — and having the autonomy to do it properly.</p>
                     </div>
                 </div>
             </div>
@@ -976,7 +1050,8 @@
         <div class="section-label">About</div>
         <div class="about-grid">
             <div>
-                <h2 class="about-headline reveal-heading">Revenue person who <em>works like an engineer</em> and leads like someone
+                <h2 class="about-headline reveal-heading">Revenue person who <em>works like an engineer</em> and leads
+                    like someone
                     who's
                     managed people since 23.</h2>
             </div>
@@ -1131,6 +1206,11 @@
                 <div class="about-tags" style="margin-top:1.5rem">
                     <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Claude
                         API</span><span class="tag">MCP</span><span class="tag">Agentic AI</span>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="https://toni-crm.vercel.app" target="_blank" rel="noopener noreferrer" class="toni-cta">
+                        Explore Toni CRM ↗
+                    </a>
                 </div>
             </div>
             <div>
@@ -1310,24 +1390,24 @@
                 <div class="astro-subtitle">Sagittarius · Scorpio Moon · Cancer Rising · Aries MC</div>
                 <div class="astro-chart">
                     <div class="astro-planet"><span class="planet-symbol">☀️</span>
-                         <div class="planet-name">Sun</div>
-                         <div class="planet-placement">1° Sagittarius</div>
-                         <div class="planet-quality">Jupiter-ruled · fire · expansion</div>
+                        <div class="planet-name">Sun</div>
+                        <div class="planet-placement">1° Sagittarius</div>
+                        <div class="planet-quality">Jupiter-ruled · fire · expansion</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">🌙</span>
-                         <div class="planet-name">Moon</div>
-                         <div class="planet-placement">27° Scorpio</div>
-                         <div class="planet-quality">Deep intensity · investigative</div>
+                        <div class="planet-name">Moon</div>
+                        <div class="planet-placement">27° Scorpio</div>
+                        <div class="planet-quality">Deep intensity · investigative</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">⬆️</span>
-                         <div class="planet-name">Rising</div>
-                         <div class="planet-placement">26° Cancer</div>
-                         <div class="planet-quality">Protective · intuitive outer persona</div>
+                        <div class="planet-name">Rising</div>
+                        <div class="planet-placement">26° Cancer</div>
+                        <div class="planet-quality">Protective · intuitive outer persona</div>
                     </div>
                     <div class="astro-planet"><span class="planet-symbol">🏔️</span>
-                         <div class="planet-name">Midheaven</div>
-                         <div class="planet-placement">9° Aries</div>
-                         <div class="planet-quality">Pioneer · first-mover career energy</div>
+                        <div class="planet-name">Midheaven</div>
+                        <div class="planet-placement">9° Aries</div>
+                        <div class="planet-quality">Pioneer · first-mover career energy</div>
                     </div>
                 </div>
             </div>
@@ -1524,14 +1604,14 @@
         // --- 4. Animated Toni CRM Pipeline ---
         const pipelineSteps = document.querySelectorAll('.toni-flow .flow-step');
         let currentStep = 0;
-        
+
         function animatePipeline() {
             // Remove active class from all steps
             pipelineSteps.forEach(step => step.classList.remove('active'));
-            
+
             // Add active class to current step
             pipelineSteps[currentStep].classList.add('active');
-            
+
             // Advance step or reset
             if (currentStep === pipelineSteps.length - 1) {
                 // Stay on final completed step longer before restarting
@@ -1542,7 +1622,7 @@
                 setTimeout(animatePipeline, 1800);
             }
         }
-        
+
         // Start pipeline animation when section is in view
         const toniSection = document.getElementById('toni');
         let animationStarted = false;
@@ -1555,7 +1635,7 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         if (toniSection) {
             toniObserver.observe(toniSection);
         } else {
