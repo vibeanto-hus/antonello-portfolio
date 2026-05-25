@@ -931,6 +931,69 @@
                 gap: 0.75rem;
             }
         }
+
+        /* --- Interactive Deal Drawer (Component 1) --- */
+        .deal-row {
+            cursor: pointer !important;
+            user-select: none;
+        }
+        .deal-row:hover {
+            background: rgba(201, 185, 154, 0.03) !important;
+        }
+        .deal-indicator {
+            display: inline-block;
+            margin-left: 0.8rem;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+        }
+        .deal-row.is-expanded .deal-indicator {
+            transform: rotate(45deg);
+            color: var(--accent);
+        }
+        .deal-drawer {
+            grid-column: 1 / -1;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, margin-top 0.5s ease;
+        }
+        .deal-row.is-expanded .deal-drawer {
+            opacity: 1;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .drawer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+        }
+        .drawer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .drawer-label {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .drawer-text {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        @media(max-width: 768px) {
+            .drawer-content {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
     </style>
 </head>
 
@@ -1124,43 +1187,155 @@
                 <div>
                     <div class="deal-company">Mobicom Mongolia</div>
                     <div class="deal-detail">Full cycle · zero shared language · 12x old price point</div>
-                </div><span class="deal-tag">+650%</span><span class="deal-amount">$90k ARR</span>
+                </div><span class="deal-tag">+650%</span><span class="deal-amount">$90k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">Zero shared language between teams. Strong initial price resistance under standard pricing structures.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Bypassed standard slide decks; built custom, visual infrastructure diagrams illustrating exact VPC networking and IDP orchestration steps to demonstrate value.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Handled full cycle solo, driving a 12x price uplift over standard customer entries.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">National Hockey League</div>
                     <div class="deal-detail">C-suite remote presentation · Slack-guided champion</div>
-                </div><span class="deal-tag">20x MVP</span><span class="deal-amount">$80k ARR</span>
+                </div><span class="deal-tag">20x MVP</span><span class="deal-amount">$80k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">Remote-only communication with multiple C-suite stakeholders and zero physical access.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Identified and activated a key technical champion inside the NHL engineering team via direct Slack channel collaboration, aligning their roadmaps.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Secured C-suite approval on an interactive remote-guided POC to bypass procurement blocks.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">Sartorius</div>
                     <div class="deal-detail">Cold intro at Berlin booth → multi-stakeholder close</div>
-                </div><span class="deal-tag">+558%</span><span class="deal-amount">$79k ARR</span>
+                </div><span class="deal-tag">+558%</span><span class="deal-amount">$79k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">Cold lead captured at a chaotic industry exhibition booth in Berlin.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Bypassed traditional pipeline delay steps by running technical qualified reviews directly at the booth, accelerating validation.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Closed a complex multi-stakeholder contract, scaling the initial entry point to 5.5x the standard MVP budget.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">Biorelate</div>
                     <div class="deal-detail">Largest per-user price in Humanitec history · Christmas close</div>
-                </div><span class="deal-tag">No MVP</span><span class="deal-amount">$65k ARR</span>
+                </div><span class="deal-tag">No MVP</span><span class="deal-amount">$65k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">Enterprise security restrictions and strong resistance to standard multi-user licensing prices.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Structured a highly targeted commercial model showcasing direct engineering labor savings, justifying the largest per-user price in Humanitec history.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Closed the contract over Christmas week, successfully bypassing the standard trial/MVP phase.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">Hubtel Ghana</div>
                     <div class="deal-detail">4-week POC · all commercial, technical &amp; negotiation solo</div>
-                </div><span class="deal-tag">4-week</span><span class="deal-amount">$60k ARR</span>
+                </div><span class="deal-tag">4-week</span><span class="deal-amount">$60k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">High commercial risk and complex platform specifications requiring a rapid 4-week proof of concept.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Managed the entire solution engineering, commercial negotiations, and security reviews completely solo without internal SE backing.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Delivered an fully-functioning sandbox, closing the $60k contract in record time.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">Siigo Colombia</div>
                     <div class="deal-detail">Only Spanish speaker at Humanitec · full cycle solo</div>
-                </div><span class="deal-tag">LATAM #1</span><span class="deal-amount">$45k ARR</span>
+                </div><span class="deal-tag">LATAM #1</span><span class="deal-amount">$45k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">B2B stakeholders only communicated in Spanish; no Spanish-speaking team members available.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Acted as the sole translator, solutions architect, and commercial lead for all Latin American communications.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Managed the entire full-cycle workflow solo to win Humanitec's first ever major LATAM account.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="deal-row">
                 <div>
                     <div class="deal-company">On Location (Endeavour)</div>
                     <div class="deal-detail">Strong enough case to bypass MVP entirely</div>
-                </div><span class="deal-tag">Direct</span><span class="deal-amount">$45k ARR</span>
+                </div><span class="deal-tag">Direct</span><span class="deal-amount">$45k ARR <span class="deal-indicator">+</span></span>
+                <div class="deal-drawer">
+                    <div class="drawer-content">
+                        <div class="drawer-column">
+                            <span class="drawer-label">Friction</span>
+                            <p class="drawer-text">Tight operational schedule leaving zero time for a typical multi-month trial or proof of concept.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">Breakthrough</span>
+                            <p class="drawer-text">Provided a high-fidelity architectural blueprint proving system ROI so convincingly that it bypassed the trial stage.</p>
+                        </div>
+                        <div class="drawer-column">
+                            <span class="drawer-label">The Play</span>
+                            <p class="drawer-text">Signed a direct production agreement immediately, skipping the standard sales cycle overhead.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1648,6 +1823,59 @@
             // Fallback if section structure changes
             animatePipeline();
         }
+
+        // --- 5. Interactive Deal Drawer (Component 1) ---
+        const dealRows = document.querySelectorAll('.deal-row');
+        dealRows.forEach(row => {
+            row.addEventListener('click', (e) => {
+                // Ignore clicks inside the drawer itself to prevent unwanted closing
+                if (e.target.closest('.deal-drawer')) {
+                    return;
+                }
+
+                const drawer = row.querySelector('.deal-drawer');
+                if (!drawer) return;
+
+                const isExpanded = row.classList.contains('is-expanded');
+
+                // Collapse all other deal rows smoothly
+                dealRows.forEach(otherRow => {
+                    if (otherRow !== row && otherRow.classList.contains('is-expanded')) {
+                        otherRow.classList.remove('is-expanded');
+                        const otherDrawer = otherRow.querySelector('.deal-drawer');
+                        if (otherDrawer) {
+                            if (otherDrawer.style.maxHeight === 'none') {
+                                otherDrawer.style.maxHeight = otherDrawer.scrollHeight + 'px';
+                                otherDrawer.offsetHeight; // Force reflow
+                            }
+                            otherDrawer.style.maxHeight = '0px';
+                        }
+                    }
+                });
+
+                if (isExpanded) {
+                    if (drawer.style.maxHeight === 'none') {
+                        drawer.style.maxHeight = drawer.scrollHeight + 'px';
+                        drawer.offsetHeight; // Force reflow
+                    }
+                    row.classList.remove('is-expanded');
+                    setTimeout(() => {
+                        drawer.style.maxHeight = '0px';
+                    }, 10);
+                } else {
+                    row.classList.add('is-expanded');
+                    drawer.style.maxHeight = drawer.scrollHeight + 'px';
+
+                    const handleTransitionEnd = (event) => {
+                        if (event.propertyName === 'max-height' && row.classList.contains('is-expanded')) {
+                            drawer.style.maxHeight = 'none';
+                            drawer.removeEventListener('transitionend', handleTransitionEnd);
+                        }
+                    };
+                    drawer.addEventListener('transitionend', handleTransitionEnd);
+                }
+            });
+        });
     </script>
 </body>
 
