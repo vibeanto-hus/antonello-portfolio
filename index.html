@@ -1011,7 +1011,8 @@
             top: 60%;
             right: -10%;
             width: 55%;
-            height: 70%;
+            height: auto;
+            aspect-ratio: 784 / 459;
             transform: translateY(-50%) scale(0.95);
             opacity: 0.12;
             pointer-events: none;
@@ -1048,8 +1049,8 @@
         }
 
         #world-map-svg path {
-            fill: var(--surface2);
-            stroke: var(--border);
+            fill: #2a2a2a;
+            stroke: #333333;
             stroke-width: 0.8;
             transition: fill 0.3s ease, stroke 0.3s ease;
         }
