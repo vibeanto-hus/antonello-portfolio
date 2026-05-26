@@ -99,6 +99,66 @@
             color: var(--accent)
         }
 
+        .nav-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            padding: 0.35rem 0.9rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            margin-left: auto;
+            align-self: center
+        }
+
+        .nav-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            flex-direction: column;
+            padding-top: 3.4rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .nav-menu.open {
+            display: flex
+        }
+
+        .nav-menu a {
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            transition: color 0.2s, background 0.2s
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+            background: var(--surface2)
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -113,6 +173,17 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201, 185, 154, 0.04) 0%, transparent 70%)
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            padding: 0;
+            padding-top: 0;
+            width: 100%;
+            position: relative;
         }
 
         .hero-label {
@@ -130,7 +201,8 @@
             font-weight: 400;
             line-height: 0.9;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem
+            margin-bottom: 1.5rem;
+            margin-top: 3rem
         }
 
         .hero-name em {
@@ -722,7 +794,7 @@
         }
 
         .badge-open {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
             font-family: var(--mono);
@@ -732,7 +804,8 @@
             padding: 0.4rem 1rem;
             border: 1px solid rgba(212, 168, 83, 0.3);
             color: var(--gold);
-            margin-bottom: 2rem
+            margin-bottom: 1.5rem;
+            align-self: flex-start;
         }
 
         .badge-dot {
@@ -774,6 +847,23 @@
         @media(max-width:768px) {
             .nav {
                 padding: 1rem 1.5rem
+            }
+
+            .hero-name {
+                font-size: clamp(2.8rem, 14vw, 5rem);
+            }
+
+            .hero-sub {
+                display: none;
+            }
+
+            .nav-links,
+            .nav-status {
+                display: none
+            }
+
+            .nav-toggle {
+                display: block
             }
 
             .hero {
@@ -1171,7 +1261,17 @@
             <a href="#stack">Stack</a>
             <a href="#contact">Contact</a>
         </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
     </nav>
+    <div class="nav-menu" id="navMenu">
+        <a href="#open-to">Open To</a>
+        <a href="#about">About</a>
+        <a href="#deals">Deals</a>
+        <a href="#toni">Toni</a>
+        <a href="#roots">Roots</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+    </div>
 
     <div class="hero">
         <div class="hero-bg"></div>
@@ -1890,12 +1990,12 @@
                         <circle class="map-pulse-point" cx="228.0" cy="519.0" />
                     </g>
                     <g class="hotspot" data-city="newyork" data-country="us">
-                        <circle class="map-pulse-ring" cx="205.0" cy="392.0" />
-                        <circle class="map-pulse-point" cx="205.0" cy="392.0" />
+                        <circle class="map-pulse-ring" cx="228.0" cy="414.0" />
+                        <circle class="map-pulse-point" cx="228.0" cy="414.0" />
                     </g>
                     <g class="hotspot" data-city="losangeles" data-country="us">
-                        <circle class="map-pulse-ring" cx="115.0" cy="407.0" />
-                        <circle class="map-pulse-point" cx="115.0" cy="407.0" />
+                        <circle class="map-pulse-ring" cx="133.0" cy="409.0" />
+                        <circle class="map-pulse-point" cx="133.0" cy="409.0" />
                     </g>
                     <g class="hotspot" data-city="varese" data-country="it">
                         <circle class="map-pulse-ring" cx="428.5" cy="411.0" />
@@ -1932,8 +2032,9 @@
                 </g>
             </svg>
         </div>
+        <div class="hero-content">
         <div class="badge-open"><span class="badge-dot"></span>Open to opportunities</div>
-        <div class="hero-label">Global GTM · AI-Native Builder · Cross-Functional Collaborator</div>
+        <div class="hero-label">GLOBAL GTM · AI-NATIVE BUILDER · IC · AE</div>
         <h1 class="hero-name">Antonello<br><em>Totaro.</em></h1>
         <p class="hero-sub">Built deep partnerships with engineering and product to ship real things — then went out and
             sold them. Covered every revenue function solo when needed, never without a team when it mattered.</p>
@@ -1954,6 +2055,7 @@
         </div>
 
         <span class="scroll-hint">Scroll</span>
+        </div>
     </div>
 
     <section id="open-to" style="border-top: 1px solid var(--border); padding: 6rem 3rem;">
@@ -2683,6 +2785,24 @@
     </footer>
 
     <script>
+        // --- 0. Mobile Nav Toggle ---
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const open = navMenu.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                navToggle.textContent = open ? '✕' : '☰';
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navToggle.textContent = '☰';
+                });
+            });
+        }
+
         // --- 1. Reading Progress Bar ---
         const progressBar = document.getElementById('reading-progress');
         window.addEventListener('scroll', () => {
@@ -2873,6 +2993,13 @@
                 mapTooltip.classList.remove('visible');
             });
         });
+        // --- Hero content padding offset for fixed nav ---
+        function setHeroContentPadding() {
+            const navHeight = document.querySelector('.nav').offsetHeight;
+            document.querySelector('.hero-content').style.paddingTop = (navHeight + 16) + 'px';
+        }
+        setHeroContentPadding();
+        window.addEventListener('resize', setHeroContentPadding);
     </script>
 </body>
 
