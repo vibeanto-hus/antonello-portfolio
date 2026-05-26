@@ -135,7 +135,9 @@
             flex-direction: column;
             padding-top: 3.4rem;
             background: var(--surface);
-            border-bottom: 1px solid var(--border)
+            border-bottom: 1px solid var(--border);
+            overflow-y: auto;
+            max-height: calc(100vh - 4.5rem)
         }
 
         .nav-menu.open {
@@ -2793,12 +2795,14 @@
                 const open = navMenu.classList.toggle('open');
                 navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
                 navToggle.textContent = open ? '✕' : '☰';
+                document.body.style.overflow = open ? 'hidden' : '';
             });
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('open');
                     navToggle.setAttribute('aria-expanded', 'false');
                     navToggle.textContent = '☰';
+                    document.body.style.overflow = '';
                 });
             });
         }
