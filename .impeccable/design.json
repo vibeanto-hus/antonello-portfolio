@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-30T00:00:00Z",
+  "title": "Design System: Antonello Totaro Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Aged Brass",
+        "canonical": "#c9b99a",
+        "tonalRamp": ["#2a2517", "#433c26", "#5d5337", "#786c4a", "#94865f", "#b0a079", "#c9b99a", "#e0d6c0"]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Lamp Gold",
+        "canonical": "#d4a853",
+        "tonalRamp": ["#332408", "#4d3712", "#6b4e1d", "#8a662b", "#a9803c", "#c69650", "#d4a853", "#e8c987"]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Void Black",
+        "canonical": "#0a0a0a",
+        "tonalRamp": ["#0a0a0a", "#111111", "#1a1a1a", "#222222", "#3a3a3a", "#6b6b6b", "#b8b3aa", "#f0ece4"]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#f0ece4",
+        "tonalRamp": ["#1c1b18", "#34322c", "#4d4a42", "#6b6b6b", "#908b80", "#b8b3aa", "#d7d1c6", "#f0ece4"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "#6b6b6b",
+        "tonalRamp": ["#161616", "#222222", "#333333", "#4a4a4a", "#6b6b6b", "#8f8f8f", "#b3b3b3", "#d6d6d6"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#222222",
+        "tonalRamp": ["#0a0a0a", "#111111", "#1a1a1a", "#222222", "#333333", "#4a4a4a", "#6b6b6b", "#8f8f8f"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name only. Oversized Instrument Serif; emphasis turns italic brass." },
+      "headline": { "displayName": "Headline", "purpose": "About and contact statements." },
+      "title": { "displayName": "Title", "purpose": "Card subjects and names, always serif italic." },
+      "body": { "displayName": "Body", "purpose": "All running copy, DM Sans 300, 65-75ch measure." },
+      "label": { "displayName": "Label", "purpose": "DM Mono uppercase metadata, section tags, nav." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 8px 24px rgba(0,0,0,0.35)", "purpose": "The only structural shadow. On card hover, paired with translateY(-2px)." },
+      { "name": "accent-glow", "value": "0 0 12px rgba(201,185,154,0.15)", "purpose": "Soft brass halo on hover of ghost buttons and hero links. Atmospheric, not depth." }
+    ],
+    "motion": [
+      { "name": "ease-editorial", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Ease-out-expo for reveals, drawers, map transitions." },
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Flow-step opacity and border transitions." },
+      { "name": "state-fast", "value": "0.2s", "purpose": "Hover/color state changes on links, cards, nav." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "1024px" },
+      { "name": "sm", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ghost CTA",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Primary call-to-action: transparent with a brass hairline border. Used for the Toni CTA and hero links.",
+      "html": "<a class=\"ds-cta\" href=\"#\">View Toni CRM</a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: #c9b99a; border: 1px solid #c9b99a; padding: 0.75rem 1.5rem; background: transparent; transition: background 0.3s ease, box-shadow 0.3s ease; } .ds-cta:hover { background: rgba(201,185,154,0.05); box-shadow: 0 0 15px rgba(201,185,154,0.25); } .ds-cta:focus-visible { outline: 2px solid #d4a853; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Mono uppercase skill/metadata tag, sharp hairline border.",
+      "html": "<span class=\"ds-tag\">Global GTM</span>",
+      "css": ".ds-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 0.3rem 0.8rem; border: 1px solid #222222; color: #6b6b6b; text-transform: uppercase; }"
+    },
+    {
+      "name": "Highlight Tag",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Emphasized tag with brass border and brass text for standout credentials.",
+      "html": "<span class=\"ds-tag-hl\">Solo $1M+ win</span>",
+      "css": ".ds-tag-hl { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid rgba(201,185,154,0.2); color: #c9b99a; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Partner/system/early card. Flat at rest, lifts on hover. Sits on a hairline grid.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-title\">Partnerships Built</div><div class=\"ds-card-body\">Co-designed the Humanitec Sandbox and drove the GTM motion around it.</div></div>",
+      "css": ".ds-card { background: #0a0a0a; padding: 2.5rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-card:hover { background: #111111; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); } .ds-card-title { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b99a; margin-bottom: 0.8rem; } .ds-card-body { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.85rem; color: #6b6b6b; line-height: 1.7; }"
+    },
+    {
+      "name": "Open-To Badge",
+      "kind": "custom",
+      "refersTo": "badge-open",
+      "description": "The live signal: mono uppercase with a pulsing Lamp Gold dot. Reserved for status only.",
+      "html": "<span class=\"ds-badge\"><span class=\"ds-badge-dot\"></span>Open to new roles</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid rgba(212,168,83,0.3); color: #d4a853; } .ds-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #d4a853; animation: dsPulse 2s infinite; } @keyframes dsPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Mono uppercase section tag with a brass-to-transparent divider line trailing it.",
+      "html": "<div class=\"ds-section-label\">Solo Deal Wins</div>",
+      "css": ".ds-section-label { display: flex; align-items: center; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #6b6b6b; text-transform: uppercase; } .ds-section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #c9b99a, transparent); opacity: 0.4; }"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "refersTo": "label",
+      "description": "Fixed blurred bar, mono uppercase links, brass on hover/active.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-name\">Antonello Totaro</span><a class=\"ds-nav-link\" href=\"#\">Work</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; padding: 1.5rem 3rem; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #222222; } .ds-nav-name { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.15em; color: #6b6b6b; text-transform: uppercase; } .ds-nav-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #6b6b6b; text-decoration: none; text-transform: uppercase; transition: color 0.2s; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #c9b99a; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operator's Dossier",
+    "overview": "A confidential, high-signal file on a person who closes deals and builds his own tools. Near-black paper, a worn-brass ink for the things that matter, and a single live gold marker for what is current. Monospace runs the margins as field tags; an Instrument Serif italic is the human voice between the data. Editorial first: hierarchy from type scale and the contrast between a quiet 300-weight sans body and an oversized serif display, not from boxes or color. Surfaces are flat and layered tonally; the only depth is a restrained lift on hover. Accent is rationed.",
+    "keyCharacteristics": [
+      "Warm-dark, never cold: every neutral tinted toward brass, text is #f0ece4 not white.",
+      "Sharp-cornered (0 radius) surfaces with hairline #222 borders and tonal layering instead of shadow.",
+      "Oversized Instrument Serif display against quiet DM Sans body and DM Mono metadata.",
+      "One rationed accent (Aged Brass) plus one rare live signal (Lamp Gold).",
+      "Restraint as the default; motion and color are earned, not sprayed."
+    ],
+    "rules": [
+      { "name": "The Rationed Accent Rule", "body": "Brass and gold together stay on roughly 10% of any screen. Most of the page is Bone-on-Black. Brass marks craft and emphasis; Gold marks what is live.", "section": "colors" },
+      { "name": "The No-White Rule", "body": "#fff and #000 are forbidden. Text is Bone (#f0ece4); the darkest surface is Void Black (#0a0a0a). Every neutral is tinted warm.", "section": "colors" },
+      { "name": "The Three-Voice Rule", "body": "Serif speaks (headings, names, emphasis), Sans narrates (body), Mono tags (labels, metadata). Never mix the jobs.", "section": "typography" },
+      { "name": "The Italic-Brass Rule", "body": "Emphasis inside a serif heading is italic in Aged Brass, never bold, never a different size.", "section": "typography" },
+      { "name": "The Flat-Until-Touched Rule", "body": "Surfaces are flat at rest. Shadow exists only as a response to hover. A resting element never carries a drop shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep text Bone (#f0ece4) on Void Black (#0a0a0a). Tint every neutral warm.",
+      "Do ration accent: Brass for emphasis/craft, Gold only for the live 'open to work' signal. Keep both under ~10% of any screen.",
+      "Do use the three-voice type system: serif speaks, sans narrates, mono tags.",
+      "Do keep surfaces flat at rest; introduce the Card Lift shadow only on hover.",
+      "Do express heading emphasis as italic Brass, never bold.",
+      "Do disclose detail inline (the deal drawer), and honor prefers-reduced-motion by gating reveals, the flow stepper, and map pulses."
+    ],
+    "donts": [
+      "Don't build a generic SaaS landing: no gradient blobs, no hero-metric template, no identical feature-card grids.",
+      "Don't drift toward a LinkedIn / corporate CV: no stock-blue, no buzzword soup, no timeline-resume layout.",
+      "Don't produce AI-slop dark-portfolio tropes: no neon-on-black, no decorative glassmorphism, no glowing gradient text.",
+      "Don't use #fff or #000 anywhere.",
+      "Don't round corners; this system is sharp (0 radius), except the 3px tooltip and circular pulse dots.",
+      "Don't add side-stripe borders (border-left/border-right >1px as a colored accent).",
+      "Don't spray gold; if it stops being rare, it stops reading as live."
+    ]
+  }
+}
