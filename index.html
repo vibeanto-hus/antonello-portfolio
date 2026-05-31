@@ -883,7 +883,13 @@
             }
 
             .hero-sub {
-                display: none;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+                max-width: 100%;
             }
 
             .nav-links,
@@ -2892,12 +2898,18 @@
 
         // --- 1. Reading Progress Bar ---
         const progressBar = document.getElementById('reading-progress');
+        let progressTicking = false;
         window.addEventListener('scroll', () => {
-            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-            progressBar.style.width = scrolled + '%';
-        });
+            if (progressTicking) return;
+            progressTicking = true;
+            requestAnimationFrame(() => {
+                const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                progressBar.style.width = scrolled + '%';
+                progressTicking = false;
+            });
+        }, { passive: true });
 
         // --- 2. Scroll-Triggered Heading Reveals ---
         const revealHeadings = document.querySelectorAll('.reveal-heading');
