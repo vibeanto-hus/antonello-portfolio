@@ -53,6 +53,18 @@
             color: var(--text)
         }
 
+        a:focus-visible,
+        button:focus-visible,
+        [role="button"]:focus-visible,
+        .hotspot:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px
+        }
+
+        :focus:not(:focus-visible) {
+            outline: none
+        }
+
         body {
             background: var(--bg);
             color: var(--text);
@@ -1261,7 +1273,42 @@
                 opacity: 0;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important
+            }
+
+            .reveal-heading {
+                opacity: 1 !important;
+                transform: none !important
+            }
+
+            .flow-step {
+                opacity: 1 !important
+            }
+
+            .map-pulse-ring {
+                display: none
+            }
+        }
     </style>
+    <noscript>
+        <style>
+            .reveal-heading {
+                opacity: 1 !important;
+                transform: none !important
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -2939,6 +2986,18 @@
         // --- 5. Interactive Deal Drawer (Component 1) ---
         const dealRows = document.querySelectorAll('.deal-row');
         dealRows.forEach(row => {
+            // Make each expandable row keyboard-operable and screen-reader-aware
+            if (row.querySelector('.deal-drawer')) {
+                row.setAttribute('role', 'button');
+                row.setAttribute('tabindex', '0');
+                row.setAttribute('aria-expanded', 'false');
+                row.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+                        e.preventDefault();
+                        row.click();
+                    }
+                });
+            }
             row.addEventListener('click', (e) => {
                 // Ignore clicks inside the drawer itself to prevent unwanted closing
                 if (e.target.closest('.deal-drawer')) {
@@ -2954,6 +3013,7 @@
                 dealRows.forEach(otherRow => {
                     if (otherRow !== row && otherRow.classList.contains('is-expanded')) {
                         otherRow.classList.remove('is-expanded');
+                        otherRow.setAttribute('aria-expanded', 'false');
                         const otherDrawer = otherRow.querySelector('.deal-drawer');
                         if (otherDrawer) {
                             if (otherDrawer.style.maxHeight === 'none') {
@@ -2971,11 +3031,13 @@
                         drawer.offsetHeight; // Force reflow
                     }
                     row.classList.remove('is-expanded');
+                    row.setAttribute('aria-expanded', 'false');
                     setTimeout(() => {
                         drawer.style.maxHeight = '0px';
                     }, 10);
                 } else {
                     row.classList.add('is-expanded');
+                    row.setAttribute('aria-expanded', 'true');
                     drawer.style.maxHeight = drawer.scrollHeight + 'px';
 
                     const handleTransitionEnd = (event) => {
@@ -3013,25 +3075,58 @@
         const tooltipCity = mapTooltip?.querySelector('.tooltip-city');
         const tooltipNote = mapTooltip?.querySelector('.tooltip-note');
 
+        const showTooltip = (data, x, y) => {
+            tooltipCity.textContent = data.name;
+            tooltipNote.textContent = data.note;
+            mapTooltip.style.left = x + 'px';
+            mapTooltip.style.top = y + 'px';
+            mapTooltip.classList.add('visible');
+        };
+        const hideTooltip = () => mapTooltip.classList.remove('visible');
+
         document.querySelectorAll('.hotspot').forEach(hotspot => {
             const key = hotspot.getAttribute('data-city');
             const data = hotspots[key];
             if (!data || !mapTooltip) return;
 
+            // Keyboard + screen-reader access (SVG groups are not focusable by default)
+            hotspot.setAttribute('tabindex', '0');
+            hotspot.setAttribute('role', 'img');
+            hotspot.setAttribute('aria-label', data.name + ' — ' + data.note);
+
+            // Pointer
             hotspot.addEventListener('mouseenter', () => {
                 tooltipCity.textContent = data.name;
                 tooltipNote.textContent = data.note;
                 mapTooltip.classList.add('visible');
             });
-
             hotspot.addEventListener('mousemove', (e) => {
                 mapTooltip.style.left = e.clientX + 'px';
                 mapTooltip.style.top = e.clientY + 'px';
             });
+            hotspot.addEventListener('mouseleave', hideTooltip);
 
-            hotspot.addEventListener('mouseleave', () => {
-                mapTooltip.classList.remove('visible');
+            // Keyboard focus: anchor tooltip to the hotspot's screen position
+            const showAtElement = () => {
+                const r = hotspot.getBoundingClientRect();
+                showTooltip(data, r.left + r.width / 2, r.top);
+            };
+            hotspot.addEventListener('focus', showAtElement);
+            hotspot.addEventListener('blur', hideTooltip);
+
+            // Touch: tap toggles the tooltip
+            hotspot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mapTooltip.classList.contains('visible') && tooltipCity.textContent === data.name) {
+                    hideTooltip();
+                } else {
+                    showAtElement();
+                }
             });
+        });
+        // Dismiss the map tooltip when tapping elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.hotspot')) hideTooltip();
         });
         // --- Hero content padding offset for fixed nav ---
         function setHeroContentPadding() {
