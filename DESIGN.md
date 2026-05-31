@@ -7,7 +7,7 @@ colors:
   surface2: "#1a1a1a"
   border: "#222222"
   text: "#f0ece4"
-  muted: "#6b6b6b"
+  muted: "#8d8881"
   accent: "#c9b99a"
   gold: "#d4a853"
 typography:
@@ -109,7 +109,7 @@ A warm-neutral dark palette: three tonal near-blacks, a tinted off-white, and tw
 - **Surface Two** (`#1a1a1a`): Second tonal lift, deepest interactive surface.
 - **Hairline** (`#222222`): Every border, gridline, and divider. Structure without weight.
 - **Bone** (`#f0ece4`): Primary text. A warm off-white, never pure white.
-- **Ash** (`#6b6b6b`): Muted text, labels, secondary copy, inactive nav.
+- **Ash** (`#8d8881`): Muted text, labels, secondary copy, inactive nav. A warm-tinted gray, not neutral. Tuned to clear WCAG AA on Void Black (≈5.6:1); never drop it back toward `#6b6b6b` (3.7:1, fails).
 
 ### Named Rules
 **The Rationed Accent Rule.** Brass and gold together stay on roughly 10% of any screen. Most of the page is Bone-on-Black. Brass marks craft and emphasis; Gold marks what is live. If a third thing wants color, it gets weight or size instead.
@@ -128,7 +128,7 @@ A warm-neutral dark palette: three tonal near-blacks, a tinted off-white, and tw
 - **Display** (400, `clamp(4rem, 9vw, 8rem)`, line-height 0.9, `-0.02em`): Hero name only. Serif `em` inside it turns brass and italic.
 - **Headline** (400, `clamp(2rem, 4vw, 3.2rem)`, line-height 1.15): About and contact headlines; the page's larger statements.
 - **Title** (400 italic, `1.1–1.5rem`): Card subjects, deal/partner/early-role names, planet placements, language names. Always serif italic.
-- **Body** (300, `0.85–0.95rem`, line-height 1.7–1.8): All running copy. Color is Ash (`#6b6b6b`) for descriptions, Bone for primary. Keep measure at 65–75ch.
+- **Body** (300, `0.85–0.95rem`, line-height 1.7–1.8): All running copy. Color is Ash (`#8d8881`) for descriptions, Bone for primary. Keep measure at 65–75ch.
 - **Label** (400, `10–13px`, letter-spacing `0.1–0.25em`, UPPERCASE): DM Mono section labels, tags, nav links, stat captions, status text.
 
 ### Named Rules

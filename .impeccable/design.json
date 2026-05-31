@@ -31,7 +31,7 @@
       "muted": {
         "role": "neutral",
         "displayName": "Ash",
-        "canonical": "#6b6b6b",
+        "canonical": "#8d8881",
         "tonalRamp": ["#161616", "#222222", "#333333", "#4a4a4a", "#6b6b6b", "#8f8f8f", "#b3b3b3", "#d6d6d6"]
       },
       "border": {
@@ -77,7 +77,7 @@
       "refersTo": "chip",
       "description": "Mono uppercase skill/metadata tag, sharp hairline border.",
       "html": "<span class=\"ds-tag\">Global GTM</span>",
-      "css": ".ds-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 0.3rem 0.8rem; border: 1px solid #222222; color: #6b6b6b; text-transform: uppercase; }"
+      "css": ".ds-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 0.3rem 0.8rem; border: 1px solid #222222; color: #8d8881; text-transform: uppercase; }"
     },
     {
       "name": "Highlight Tag",
@@ -93,7 +93,7 @@
       "refersTo": "card",
       "description": "Partner/system/early card. Flat at rest, lifts on hover. Sits on a hairline grid.",
       "html": "<div class=\"ds-card\"><div class=\"ds-card-title\">Partnerships Built</div><div class=\"ds-card-body\">Co-designed the Humanitec Sandbox and drove the GTM motion around it.</div></div>",
-      "css": ".ds-card { background: #0a0a0a; padding: 2.5rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-card:hover { background: #111111; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); } .ds-card-title { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b99a; margin-bottom: 0.8rem; } .ds-card-body { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.85rem; color: #6b6b6b; line-height: 1.7; }"
+      "css": ".ds-card { background: #0a0a0a; padding: 2.5rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-card:hover { background: #111111; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); } .ds-card-title { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b99a; margin-bottom: 0.8rem; } .ds-card-body { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.85rem; color: #8d8881; line-height: 1.7; }"
     },
     {
       "name": "Open-To Badge",
@@ -109,7 +109,7 @@
       "refersTo": "label",
       "description": "Mono uppercase section tag with a brass-to-transparent divider line trailing it.",
       "html": "<div class=\"ds-section-label\">Solo Deal Wins</div>",
-      "css": ".ds-section-label { display: flex; align-items: center; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #6b6b6b; text-transform: uppercase; } .ds-section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #c9b99a, transparent); opacity: 0.4; }"
+      "css": ".ds-section-label { display: flex; align-items: center; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #8d8881; text-transform: uppercase; } .ds-section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #c9b99a, transparent); opacity: 0.4; }"
     },
     {
       "name": "Top Navigation",
@@ -117,7 +117,7 @@
       "refersTo": "label",
       "description": "Fixed blurred bar, mono uppercase links, brass on hover/active.",
       "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-name\">Antonello Totaro</span><a class=\"ds-nav-link\" href=\"#\">Work</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; padding: 1.5rem 3rem; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #222222; } .ds-nav-name { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.15em; color: #6b6b6b; text-transform: uppercase; } .ds-nav-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #6b6b6b; text-decoration: none; text-transform: uppercase; transition: color 0.2s; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #c9b99a; }"
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; padding: 1.5rem 3rem; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #222222; } .ds-nav-name { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.15em; color: #8d8881; text-transform: uppercase; } .ds-nav-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #8d8881; text-decoration: none; text-transform: uppercase; transition: color 0.2s; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #c9b99a; }"
     }
   ],
   "narrative": {
