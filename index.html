@@ -942,6 +942,15 @@
                 align-items: flex-start
             }
 
+            .hero-links a {
+                padding: 0.7rem 1rem
+            }
+
+            .contact-link {
+                min-height: 44px;
+                padding: 0.4rem 0
+            }
+
             .langs-row {
                 flex-direction: column
             }
@@ -3104,7 +3113,7 @@
             // Keyboard + screen-reader access (SVG groups are not focusable by default)
             hotspot.setAttribute('tabindex', '0');
             hotspot.setAttribute('role', 'img');
-            hotspot.setAttribute('aria-label', data.name + ' — ' + data.note);
+            hotspot.setAttribute('aria-label', data.name + ': ' + data.note);
 
             // Pointer
             hotspot.addEventListener('mouseenter', () => {
