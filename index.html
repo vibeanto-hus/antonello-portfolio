@@ -44,7 +44,13 @@
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem
+        }
+
+        ::selection {
+            background: rgba(201, 185, 154, 0.25);
+            color: var(--text)
         }
 
         body {
@@ -54,7 +60,9 @@
             font-weight: 300;
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
         }
 
         .nav {
@@ -284,7 +292,8 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--border)
+            background: linear-gradient(to right, var(--accent), transparent);
+            opacity: 0.4
         }
 
         .about-grid {
@@ -451,11 +460,13 @@
         .partner-card {
             background: var(--bg);
             padding: 3rem 2.5rem;
-            transition: background 0.2s
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s
         }
 
         .partner-card:hover {
-            background: var(--surface)
+            background: var(--surface);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35)
         }
 
         .partner-name {
@@ -490,11 +501,13 @@
         .system-card {
             background: var(--bg);
             padding: 2.5rem;
-            transition: background 0.2s
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s
         }
 
         .system-card:hover {
-            background: var(--surface)
+            background: var(--surface);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35)
         }
 
         .system-title {
@@ -588,11 +601,13 @@
         .early-card {
             background: var(--bg);
             padding: 2.5rem;
-            transition: background 0.2s
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s
         }
 
         .early-card:hover {
-            background: var(--surface)
+            background: var(--surface);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35)
         }
 
         .early-role {
