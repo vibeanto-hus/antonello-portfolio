@@ -355,6 +355,35 @@
             text-transform: uppercase
         }
 
+        .stack-col {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px
+        }
+
+        .stack-group {
+            margin-bottom: 2rem
+        }
+
+        .stack-group:last-child {
+            margin-bottom: 0
+        }
+
+        .stack-cat {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem
+        }
+
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem
+        }
+
         .numbers-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -1061,6 +1090,57 @@
             box-shadow: 0 0 15px rgba(201, 185, 154, 0.25);
         }
 
+        /* Primary conversion CTA — dominant, distinct from the ghost link pills */
+        .hero-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            min-height: 44px;
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--bg);
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.6rem 1.5rem;
+            transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .hero-cta:hover {
+            background: #d8ccb0;
+            box-shadow: 0 0 18px rgba(201, 185, 154, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .hero-cta-secondary {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .hero-cta-secondary:hover {
+            color: var(--text);
+        }
+
+        /* Emphasize the Contact nav link — it is the page's goal */
+        .nav-links a[href="#contact"] {
+            color: var(--accent);
+        }
+
         @media(max-width:768px) {
             .hero-links {
                 flex-wrap: wrap;
@@ -1333,9 +1413,9 @@
     <nav class="nav">
         <span class="nav-name">Antonello Totaro</span>
         <div class="nav-links">
-            <a href="#open-to">Open To</a>
             <a href="#about">About</a>
             <a href="#deals">Deals</a>
+            <a href="#open-to">Open To</a>
             <a href="#toni">Toni</a>
             <a href="#roots">Roots</a>
             <a href="#stack">Stack</a>
@@ -1344,9 +1424,9 @@
         <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
     </nav>
     <div class="nav-menu" id="navMenu">
-        <a href="#open-to">Open To</a>
         <a href="#about">About</a>
         <a href="#deals">Deals</a>
+        <a href="#open-to">Open To</a>
         <a href="#toni">Toni</a>
         <a href="#roots">Roots</a>
         <a href="#stack">Stack</a>
@@ -2126,6 +2206,12 @@
             <div class="stat"><span class="stat-num">14→1</span><span class="stat-label">GTM Team</span></div>
         </div>
 
+        <div class="hero-cta-row">
+            <a class="hero-cta" href="https://calendar.app.google/daEhR6mv47dm74HD6" target="_blank"
+                rel="noopener noreferrer">Book a 20-min call →</a>
+            <a class="hero-cta-secondary" href="mailto:antonellototaro@gmail.com">or email me</a>
+        </div>
+
         <div class="hero-links">
             <a href="https://linkedin.com/in/antonello-totaro-21bb87a2" target="_blank"
                 rel="noopener noreferrer">LinkedIn ↗</a>
@@ -2396,7 +2482,7 @@
         </div>
         <div style="padding: 1.5rem 2rem; border: 1px solid var(--border); border-top: none; display: flex; justify-content: space-between; align-items: center;">
     <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--muted);">Want the full deal breakdown?</span>
-    <a href="mailto:antonellototaro@gmail.com" style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(201,185,154,0.3); padding: 0.4rem 1rem; transition: all 0.2s ease;">Let's talk →</a>
+    <a href="https://calendar.app.google/daEhR6mv47dm74HD6" target="_blank" rel="noopener noreferrer" style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(201,185,154,0.3); padding: 0.4rem 1rem; transition: all 0.2s ease;">Book a call →</a>
 </div>
     </section>
 
@@ -2735,12 +2821,10 @@
 
     <section id="stack">
         <div class="section-label">Stack</div>
-        <div style="max-width: 1200px; display: flex; flex-direction: column;">
-            <div style="margin-bottom: 2rem;">
-                <div
-                    style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
-                    GTM & Revenue</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <div class="stack-col">
+            <div class="stack-group">
+                <div class="stack-cat">GTM & Revenue</div>
+                <div class="stack-tags">
                     <span class="tag">Enterprise GTM</span>
                     <span class="tag">Full-cycle SE</span>
                     <span class="tag">RFP/RFI</span>
@@ -2749,75 +2833,49 @@
                     <span class="tag">Channel & Partnerships</span>
                 </div>
             </div>
-            <div style="margin-bottom: 2rem;">
-                <div
-                    style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
-                    CRM & Outbound</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="stack-group">
+                <div class="stack-cat">CRM & Outbound</div>
+                <div class="stack-tags">
                     <span class="tag">HubSpot</span>
                     <span class="tag">Salesforce</span>
                     <span class="tag">Amplemarket</span>
                     <span class="tag">Attio</span>
-                    <span class="tag">Salesloft</span>
-                    <span class="tag">ZoomInfo</span>
-                    <span class="tag">Apollo</span>
-                    <span class="tag">RB2B</span>
                     <span class="tag">TONI CRM</span>
                 </div>
             </div>
-            <div style="margin-bottom: 2rem;">
-                <div
-                    style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
-                    AI & Automation</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="stack-group">
+                <div class="stack-cat">AI & Automation</div>
+                <div class="stack-tags">
                     <span class="tag">Claude API</span>
                     <span class="tag">Claude Code</span>
                     <span class="tag">MCP</span>
                     <span class="tag">Agentic Orchestration</span>
-                    <span class="tag">Zapier</span>
-                    <span class="tag">N8N</span>
-                    <span class="tag">AirOps</span>
                     <span class="tag">Prompt Engineering</span>
-                    <span class="tag">Granola</span>
                 </div>
             </div>
-            <div style="margin-bottom: 2rem;">
-                <div
-                    style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
-                    Development & Cloud</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="stack-group">
+                <div class="stack-cat">Build</div>
+                <div class="stack-tags">
                     <span class="tag">Python</span>
                     <span class="tag">Node.js</span>
                     <span class="tag">Supabase</span>
                     <span class="tag">PostgreSQL</span>
-                    <span class="tag">Terraform</span>
-                    <span class="tag">AWS</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">GCP</span>
-                    <span class="tag">Vercel</span>
-                    <span class="tag">GitHub</span>
-                    <span class="tag">CI/CD</span>
-                    <span class="tag">Docker</span>
                 </div>
             </div>
-            <div>
-                <div
-                    style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
-                    Platform Engineering</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="stack-group">
+                <div class="stack-cat">Platform Engineering</div>
+                <div class="stack-tags">
                     <span class="tag">Humanitec</span>
                     <span class="tag">Backstage</span>
                     <span class="tag">IDP Architecture</span>
                     <span class="tag">CNCF Ecosystem</span>
-                    <span class="tag">Redis</span>
-                    <span class="tag">Terraform State</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="astro">
-        <div class="section-label">Birth Chart · Varese, Italy · 23 Nov 1992 · 20:50</div>
+        <div class="section-label">Birth Chart · Just for fun · Varese, Italy · 23 Nov 1992</div>
         <div class="astro-block">
             <div>
                 <h2 class="astro-title reveal-heading">The <em>Global Explorer</em></h2>
@@ -2846,14 +2904,14 @@
                 </div>
             </div>
             <div class="astro-insight">
+                <p style="font-style:italic;color:var(--accent);margin-bottom:0.6rem">Strictly for fun. Read it as
+                    personality, not a hiring criterion.</p>
                 <p>A genuinely unusual stack: outward fire and vision (Sagittarius Sun + Aries MC) layered over real
                     emotional
                     depth and investigative instinct (Scorpio Moon + Cancer Rising).</p>
-                <p>The Cancer Rising is the part that makes him a natural team builder — protective, attuned to the
-                    people
-                    around him, earns loyalty by giving it first. The Scorpio Moon is why the deals he touches have
-                    unusual depth:
-                    he reads the room, finds the real objection, stays in longer than anyone else would.</p>
+                <p>The Cancer Rising tracks with the team-builder instinct: protective, attuned to the people
+                    around him, earns loyalty by giving it first. The Scorpio Moon lines up with how he works a deal:
+                    reads the room, finds the real objection, stays in longer than anyone else would.</p>
                 <p>The Aries Midheaven is the engine — it makes doing feel better than planning. But Sagittarius without
                     a
                     domain is just tourism. The global explorer path only becomes a career when that Jupiter-driven
