@@ -194,3 +194,61 @@ Flat by default, lift on state. Surfaces sit on the page as flat tonal layers (V
 - **Don't** round corners; this system is sharp (0 radius), except the 3px tooltip and circular pulse dots.
 - **Don't** add side-stripe borders (`border-left`/`border-right` >1px as a colored accent). Use full hairline borders or tonal background instead.
 - **Don't** spray gold; if it stops being rare, it stops reading as "live."
+
+---
+
+## 7. Live Critique — 2026-06-04 (flow · hierarchy · emotional resonance)
+
+Source: walked every section top-to-bottom on the live build (`antonello-portfolio.vercel.app`) via browser automation, exercised all clickables (nav anchors, deal drawers, mobile menu, external links), at desktop (1592w) and mobile (390w). Detector run on `index.html`. Focus per request: flow, hierarchy, emotional resonance. **Design health: 34/40 (Good).**
+
+### Heuristic scores
+
+| # | Heuristic | Score | Key note |
+|---|-----------|-------|----------|
+| 1 | Visibility of System Status | 4 | Reading-progress bar, active-nav Brass highlight, deal `+`→`×` toggle, pulsing "open to" dot — system state always legible. |
+| 2 | Match System / Real World | 4 | GTM/revenue language is correct for the audience; every metric is labeled. |
+| 3 | User Control & Freedom | 3 | Drawers re-collapse, mobile menu has `✕`, anchors jump cleanly. No skip-link / focus-trap handling verified. |
+| 4 | Consistency & Standards | 4 | Hairline grid, three-voice type, sharp corners held everywhere. |
+| 5 | Error Prevention | 3 | Few error surfaces (mailto/calendar are external); nothing to mis-submit. |
+| 6 | Recognition vs Recall | 4 | Text nav labels, named sections, no icon-only traps. |
+| 7 | Flexibility & Efficiency | 2 | One linear path; no keyboard shortcuts, no skip-to-content. |
+| 8 | Aesthetic & Minimalist | 4 | Editorial restraint is the strongest dimension; nothing decorative competes. |
+| 9 | Error Recovery | 3 | No form/error states to recover from. |
+| 10 | Help & Documentation | 3 | Not needed for a portfolio; contact paths are obvious. |
+
+### AI-slop verdict
+
+Passes the absolute bans (no gradient text, no glass, no SaaS-cream, no neon-on-black, sharp corners held). **One standing risk:** the page sits squarely in the *editorial-typographic* saturated lane (display-serif italic + small mono labels + ruled separators), and every section carries a tiny uppercase tracked eyebrow (`ABOUT`, `NUMBERS`, `SOLO DEAL WINS`, `OPEN TO`, `PARTNERSHIPS BUILT`…). That repeated-kicker grammar is the lane's fingerprint. PRODUCT.md commits to this lane as identity, so **identity-preservation applies and this is defensible** — but it is the single biggest "which AI made this?" exposure, so the cadence is worth varying rather than scaffolding by reflex. Detector also flagged 22 em-dashes in body copy (a cadence tell that violates this doc's own copy rule) and `Instrument Serif` as a reflex-reject face (kept here as committed identity).
+
+### What's working
+
+- **Proof-first flow holds.** About → Numbers → Deals → Partnerships → Toni → GTM systems → Roots → Languages → Stack → Astro → Contact. Credibility is banked before the ask; the narrative earns the "Let's talk." close. Honors Design Principle 1.
+- **The deal drawer is the emotional peak.** Clicking a row reveals a `FRICTION → BREAKTHROUGH → THE PLAY` three-column story. It shows *how he thinks*, not just what he closed — exactly the founder-audience proof PRODUCT.md asks for. Best interaction on the page.
+- **Distinctive, on-brand restraint.** Warm-dark palette, three-voice type, rationed Brass/Gold. Reads as a deliberate human, not a dev-folio template (Design Principle 3 met).
+
+### Emotional journey (peak-end)
+
+- **Peak:** hero name reveal + the deal-drawer storytelling.
+- **Valley:** the STACK chip walls and LANGUAGES grid — competent but flat; energy dips just before Astro.
+- **End:** Astro "The Global Explorer" humanizes (and is correctly defused with "Read it as personality, not a hiring criterion"), then "Let's talk." lands warm. Peak-end rule satisfied.
+
+### Priority issues (ordered)
+
+- **[P1] Mobile hero hook is truncated.** `.hero-sub` is `-webkit-line-clamp: 4` on ≤768px, so the positioning statement cuts off mid-sentence ("…never without a team when it…"). The audience often arrives on mobile with 30–60s; the emotional hook is exactly what gets clipped. *Fix:* drop the clamp or tighten the copy to fit 3–4 lines un-truncated. → `/impeccable adapt`
+- **[P2] Mobile menu reads unfinished.** `.nav-menu` is a content-height `position: fixed` sheet (`max-height: calc(100vh - 4.5rem)`) with no backdrop scrim, so page content bleeds through below the last link. *Fix:* add a dimming scrim or take the sheet full-height. Also the `.nav-toggle` tap target is ~21px (font-size 1.3rem, zero padding) — below the 44×44 minimum. → `/impeccable adapt`
+- **[P2] Em-dash cadence.** 22 em-dashes in body copy is an AI-cadence tell and breaks this doc's own copy rule. *Fix:* convert to commas/colons/periods/parentheses. → `/impeccable clarify`
+- **[P2] Editorial-lane / repeated-eyebrow exposure.** See AI-slop verdict. Vary the section-label cadence (drop some kickers, let a few section titles stand alone) so the rhythm reads as voice, not scaffold. → `/impeccable typeset`
+- **[P3] Two stat clusters compete near the top.** Hero stats (`$600k+ · 20× · 6 · 14→1`) and the NUMBERS band (`$464k+ · 14+ · 160+ · $0`) are both four-up big-figure rows within one scroll; `$0 marketing budget` is cryptic without its framing line. Consider differentiating their visual treatment so the second doesn't read as a repeat. → `/impeccable layout`
+- **[P3] Hero display ceiling.** `clamp(4rem, 9vw, 8rem)` tops out at 128px, above the ~96px display ceiling — borderline "shouting," acceptable for a brand hero but worth a glance at large viewports.
+
+### Persona red flags
+
+- **Casey (mobile):** truncated hero hook; sub-44px hamburger; menu sheet bleed-through; two tall stacked stat clusters push proof further down.
+- **Jordan (first-timer):** `$0` stat is ambiguous without its caption; Astro could read as noise on a fast skim (mitigated by the disclaimer).
+- **Sam (a11y):** verify muted-label contrast (Ash/muted on Void Black risks <4.5:1) and visible focus indicators on nav anchors and deal-drawer rows; tap targets as above.
+
+### Questions to consider
+
+- What would the mobile-first version of the hero say in 3 un-truncated lines?
+- Do the hero stats and the NUMBERS band need to be two separate moments, or is one stronger cluster more confident?
+- If you dropped half the section eyebrows, would the page feel less "designed" — or more?

@@ -142,8 +142,12 @@
             font-size: 1.3rem;
             line-height: 1;
             cursor: pointer;
-            padding: 0;
-            margin-left: auto;
+            padding: 0.5rem;
+            margin: -0.5rem -0.5rem -0.5rem auto;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
             align-self: center
         }
 
@@ -153,13 +157,12 @@
             top: 0;
             left: 0;
             right: 0;
+            bottom: 0;
             z-index: 99;
             flex-direction: column;
-            padding-top: 3.4rem;
+            padding-top: 4.5rem;
             background: var(--surface);
-            border-bottom: 1px solid var(--border);
             overflow-y: auto;
-            max-height: calc(100vh - 4.5rem)
         }
 
         .nav-menu.open {
@@ -1001,10 +1004,6 @@
             }
 
             .hero-sub {
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
                 font-size: 0.9rem;
                 margin-bottom: 1.5rem;
                 max-width: 100%;
@@ -1016,7 +1015,7 @@
             }
 
             .nav-toggle {
-                display: block
+                display: flex
             }
 
             .hero {
