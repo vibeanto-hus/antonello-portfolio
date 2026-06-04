@@ -38,6 +38,8 @@
             --accent: #c9b99a;
             --gold: #d4a853;
             --border: #222222;
+            --map-land: #241f1c;
+            --map-line: #2e2825;
             --serif: 'Instrument Serif', Georgia, serif;
             --mono: 'DM Mono', monospace;
             --sans: 'DM Sans', sans-serif;
@@ -382,6 +384,93 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem
+        }
+
+        /* Open To — role cards (extracted from repeated inline styles) */
+        .role-block {
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+
+        .role-eyebrow {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .role-title {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: normal;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .role-desc {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Toni roadmap — step rows (extracted from repeated inline styles) */
+        .roadmap-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem
+        }
+
+        .roadmap-sub {
+            font-family: var(--mono);
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: 0.08em
+        }
+
+        /* GTM Systems — cards (extracted from repeated inline styles) */
+        .system-title {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .system-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-row {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .metric-num {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .metric-unit {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            text-transform: uppercase;
         }
 
         .numbers-grid {
@@ -1260,8 +1349,8 @@
         }
 
         #world-map-svg path {
-            fill: #2a2a2a;
-            stroke: #333333;
+            fill: var(--map-land);
+            stroke: var(--map-line);
             stroke-width: 0.8;
             transition: fill 0.3s ease, stroke 0.3s ease;
         }
@@ -2500,58 +2589,58 @@
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column;">
-                    <div style="padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem;">
+                    <div class="role-block">
                         <div
-                            style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
+                            class="role-eyebrow">
                             Fractional GTM</div>
                         <h3
-                            style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
+                            class="role-title">
                             The builder who closes</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">Early-stage or
+                        <p class="role-desc">Early-stage or
                             scaling companies that need a GTM motion built from scratch — strategy, systems, outbound,
                             and pipeline — without a full-time hire.</p>
                     </div>
-                    <div style="padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem;">
+                    <div class="role-block">
                         <div
-                            style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
+                            class="role-eyebrow">
                             VP of Solutions / Pre-Sales</div>
                         <h3
-                            style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
+                            class="role-title">
                             Technical depth meets revenue</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">Leading a
+                        <p class="role-desc">Leading a
                             solutions or pre-sales team at a platform or infrastructure company. Where engineering
                             credibility and commercial instinct need to be the same person.</p>
                     </div>
-                    <div style="padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem;">
+                    <div class="role-block">
                         <div
-                            style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
+                            class="role-eyebrow">
                             CRO / Head of Revenue</div>
                         <h3
-                            style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
+                            class="role-title">
                             Full ownership</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">End-to-end revenue
+                        <p class="role-desc">End-to-end revenue
                             leadership at a company where GTM, product, and engineering need to speak the same language.
                             Ideally platform engineering, AI, or developer tooling.</p>
                     </div>
-                    <div style="padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem;">
+                    <div class="role-block">
                         <div
-                            style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
+                            class="role-eyebrow">
                             Account Executive</div>
                         <h3
-                            style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
+                            class="role-title">
                             The full-cycle closer</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">Joining a
+                        <p class="role-desc">Joining a
                             high-performing sales team at a platform or infrastructure company — owning the full cycle
                             from outbound to close, with the technical depth to run it without an SE.</p>
                     </div>
                     <div>
                         <div
-                            style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;">
+                            class="role-eyebrow">
                             Individual Contributor</div>
                         <h3
-                            style="font-family: var(--serif); font-style: italic; font-weight: normal; font-size: 2rem; margin-bottom: 1rem; color: var(--text);">
+                            class="role-title">
                             Deep ownership, no politics</h3>
-                        <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">A role where the
+                        <p class="role-desc">A role where the
                             work speaks louder than the title. Building pipeline, running technical conversations,
                             closing deals — and having the autonomy to do it properly.</p>
                     </div>
@@ -2620,33 +2709,33 @@
     <div style="display:flex;flex-direction:column;gap:0">
         <div style="display:grid;grid-template-columns:2.5rem 1fr auto;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid var(--border);gap:1rem">
             <span style="font-family:var(--serif);font-style:italic;font-size:1.8rem;line-height:1;color:var(--accent)">v1</span>
-            <div style="display:flex;flex-direction:column;gap:0.2rem">
+            <div class="roadmap-detail">
                 <span style="font-family:var(--mono);font-size:11px;color:var(--text)">Architecture · open source stack · agentic orchestration</span>
-                <span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.08em">Foundation · Claude Code · Supabase · Node.js</span>
+                <span class="roadmap-sub">Foundation · Claude Code · Supabase · Node.js</span>
             </div>
             <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)">✓</span>
         </div>
         <div style="display:grid;grid-template-columns:2.5rem 1fr auto;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid var(--border);gap:1rem">
             <span style="font-family:var(--serif);font-style:italic;font-size:1.8rem;line-height:1;color:var(--accent)">v2</span>
-            <div style="display:flex;flex-direction:column;gap:0.2rem">
+            <div class="roadmap-detail">
                 <span style="font-family:var(--mono);font-size:11px;color:var(--text)">Auth · 200k HubSpot contacts migrated · full UI</span>
-                <span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.08em">May 2026 · Production</span>
+                <span class="roadmap-sub">May 2026 · Production</span>
             </div>
             <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)">✓</span>
         </div>
         <div style="display:grid;grid-template-columns:2.5rem 1fr auto;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid var(--border);gap:1rem;opacity:0.45">
             <span style="font-family:var(--serif);font-style:italic;font-size:1.8rem;line-height:1;color:var(--muted)">v3</span>
-            <div style="display:flex;flex-direction:column;gap:0.2rem">
+            <div class="roadmap-detail">
                 <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">Sequence engine · marketing email · social carousel</span>
-                <span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.08em">Sept 2026</span>
+                <span class="roadmap-sub">Sept 2026</span>
             </div>
             <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">→</span>
         </div>
         <div style="display:grid;grid-template-columns:2.5rem 1fr auto;align-items:baseline;padding:0.9rem 0;gap:1rem;opacity:0.25">
             <span style="font-family:var(--serif);font-style:italic;font-size:1.8rem;line-height:1;color:var(--muted)">v4</span>
-            <div style="display:flex;flex-direction:column;gap:0.2rem">
+            <div class="roadmap-detail">
                 <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">Signal-first GTM · convergence scoring · autonomous outbound</span>
-                <span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.08em">The vision</span>
+                <span class="roadmap-sub">The vision</span>
             </div>
             <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">∞</span>
         </div>
@@ -2663,17 +2752,17 @@
         <div class="systems-grid">
             <div class="system-card">
                 <h3
-                    style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-top: 0; margin-bottom: 1rem;">
+                    class="system-title">
                     Autonomous Outbound Engine</h3>
                 <p
-                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem;">
+                    class="system-desc">
                     Claude Chrome Extension bypasses HubSpot's 50-lead limit. 4 parallel sequences at 250 leads/day via
                     Claude Haiku. Amplemarket Duo runs 24/7 with signal-based triggers — zero manual review.</p>
-                <div style="margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 0.75rem;">
+                <div class="metric-row">
                     <span
-                        style="font-family: var(--serif); font-style: italic; font-size: 1.8rem; color: var(--text);">250</span>
+                        class="metric-num">250</span>
                     <span
-                        style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase;">leads/day
+                        class="metric-unit">leads/day
                         · zero human review</span>
                 </div>
                 <div class="about-tags">
@@ -2685,19 +2774,19 @@
 
             <div class="system-card">
                 <h3
-                    style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-top: 0; margin-bottom: 1rem;">
+                    class="system-title">
                     $400k → $0 Marketing Rebuild</h3>
                 <p
-                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem;">
+                    class="system-desc">
                     Eliminated all paid ads. Replaced with a recurring demo aligned to live market themes.
                     Designer-quality HubSpot emails hand-coded from Figma CSS — pixel-perfect at zero premium-tool cost.
                 </p>
-                <div style="margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 0.75rem;">
+                <div class="metric-row">
                     <span
-                        style="font-family: var(--serif); font-style: italic; font-size: 1.8rem; color: var(--text);">20
+                        class="metric-num">20
                         → 160+</span>
                     <span
-                        style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase;">attendees
+                        class="metric-unit">attendees
                         · first global program</span>
                 </div>
                 <div class="about-tags">
@@ -2709,17 +2798,17 @@
 
             <div class="system-card">
                 <h3
-                    style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-top: 0; margin-bottom: 1rem;">
+                    class="system-title">
                     Lead Intelligence Pipelines</h3>
                 <p
-                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem;">
+                    class="system-desc">
                     Zapier + RB2B identifies every web visitor in real time. Sandbox engagements auto-route to sequences
                     by job title and org size. CTA footprint rationalised to exactly two: Demo or Sandbox.</p>
-                <div style="margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 0.75rem;">
+                <div class="metric-row">
                     <span
-                        style="font-family: var(--serif); font-style: italic; font-size: 1.8rem; color: var(--text);">2</span>
+                        class="metric-num">2</span>
                     <span
-                        style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase;">CTAs
+                        class="metric-unit">CTAs
                         only · Demo or Sandbox</span>
                 </div>
                 <div class="about-tags">
@@ -2731,18 +2820,18 @@
 
             <div class="system-card">
                 <h3
-                    style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-top: 0; margin-bottom: 1rem;">
+                    class="system-title">
                     Post-Call Automation</h3>
                 <p
-                    style="font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem;">
+                    class="system-desc">
                     Every first meeting auto-generates a structured report via Granola → Claude. Timeline, goals, tech
                     stack, next steps — delivered before the prospect replies. Zero post-call admin.</p>
-                <div style="margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 0.75rem;">
+                <div class="metric-row">
                     <span
-                        style="font-family: var(--serif); font-style: italic; font-size: 1.8rem; color: var(--text);">0
+                        class="metric-num">0
                         min</span>
                     <span
-                        style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase;">post-call
+                        class="metric-unit">post-call
                         admin · per meeting</span>
                 </div>
                 <div class="about-tags">
