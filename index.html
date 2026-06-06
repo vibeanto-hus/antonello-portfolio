@@ -360,6 +360,67 @@
             text-transform: uppercase
         }
 
+        /* Info tag — a chip that carries a hover/focus rationale (the Cowork "why it's here" sparkle) */
+        .tag-info {
+            position: relative;
+            cursor: help;
+            color: var(--text);
+            border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+        }
+
+        .tag-info .tag-spark {
+            margin-left: 0.45em;
+            color: var(--accent);
+            font-size: 0.9em
+        }
+
+        .tag-tip {
+            position: absolute;
+            bottom: calc(100% + 0.55rem);
+            left: 0;
+            width: max-content;
+            max-width: 260px;
+            font-family: var(--mono);
+            background: rgba(15, 15, 15, 0.97);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+            border-radius: 3px;
+            padding: 0.7rem 0.8rem;
+            font-size: 11px;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: var(--muted);
+            opacity: 0;
+            transform: translateY(4px);
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 50
+        }
+
+        .tag-tip strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 10px;
+            font-weight: 600
+        }
+
+        .tag-info:hover .tag-tip,
+        .tag-info:focus .tag-tip,
+        .tag-info:focus-visible .tag-tip {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tag-tip {
+                transition: opacity 0.18s ease;
+                transform: none
+            }
+        }
+
         .stack-col {
             display: flex;
             flex-direction: column;
@@ -2926,6 +2987,12 @@
                     <span class="tag">Amplemarket</span>
                     <span class="tag">Attio</span>
                     <span class="tag">TONI CRM</span>
+                    <span class="tag">Outreach</span>
+                    <span class="tag">Reply</span>
+                    <!-- COWORK-RATIONALE: swap the .tag-tip copy below with the Anthropic GTM whitepaper framing when provided -->
+                    <span class="tag tag-info" tabindex="0">Claude Cowork<span class="tag-spark" aria-hidden="true">✦</span>
+                        <span class="tag-tip" role="tooltip"><strong>Why it's here</strong>Anthropic's agentic coworker. Runs the outbound motion as a teammate, not a datastore: researching accounts, drafting replies, and triaging the inbox with prospect meetings.</span>
+                    </span>
                 </div>
             </div>
             <div class="stack-group">
